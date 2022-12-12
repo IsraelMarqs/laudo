@@ -1,7 +1,10 @@
 package br.com.frota.util;
 
+import br.com.frota.DAO.LaboratorioDAO;
 import br.com.frota.DAO.MedicoDAO;
+import br.com.frota.model.Laboratorio;
 import br.com.frota.model.Medico;
+import br.com.frota.servico.ServicoLaboratorio;
 import br.com.frota.servico.ServicoMedico;
 
 import java.sql.SQLException;
@@ -11,7 +14,8 @@ public class Teste {
     static MedicoDAO Med = new MedicoDAO();
 
     static ServicoMedico servMed = new ServicoMedico();
-
+    static LaboratorioDAO Lab = new LaboratorioDAO();
+    static ServicoLaboratorio servLab = new ServicoLaboratorio();
     public static void main(String[] args) throws SQLException{
 
         //count
@@ -23,35 +27,24 @@ public class Teste {
         //servMed.salvar(medi2);
 
         //buscar por ID
-        Medico a = servMed.buscarPorId(1);
+       // Medico a = servMed.buscarPorId(1);
         //System.out.println(servMed.buscarPorId(1));
         //System.out.println(a);
 
         //Update
-        //try {
-      //      a.setNome("Paulo");
-       //     a.setCRM("897");
-            servMed.update(a);
-       // Medico a2 = servMed.buscarPorId(1);
 
-       // System.out.println(a2);
-        Medico medico = Med.findById(1);
-        System.out.println(medico);
+        //Medico medico = Med.findById(1);
+        //System.out.println(medico);
 //
 ////      Update
-        medico.setNome("Nome novo");
-        medico.setCRM("930842093");
-        Med.updateMedico(medico);
+        //medico.setNome("Nome novo");
+        //medico.setCRM("930842093");
+        //Med.updateMedico(medico);
 //
-        medico = Med.findById(1);
-        System.out.println(medico);
+        //medico = Med.findById(1);
+        //System.out.println(medico);
 //
-       // } catch (SQLException e) {
-        //    throw new RuntimeException(e);
-        //}
-
-        //marca = marcaDAO.findById(2);
-        //System.out.println(marca);
+       //
 
         //Select all
         //List<Medico> medicos = Med.selectAllMedicos();
@@ -59,6 +52,20 @@ public class Teste {
 
         //Delete
         //Med.deleteMedico(2);
+
+        Laboratorio l = new Laboratorio("teste","1234","1234","1234","Lab");
+        //servLab.salvar(l);
+
+        Laboratorio la = servLab.buscarPorId(1);
+        System.out.println(la);
+
+        //la.setCNES("98754");
+        //servLab.update(la);
+        //System.out.println(la);
+
+        List<Laboratorio> labs = Lab.selectAllLaboratorios();
+        System.out.println(labs);
+
 
     }
 }
