@@ -113,7 +113,7 @@ public class ResponsavelTecnicoDAO extends ConexaoDB{
         }
     }
 
-    public void updateResponsavelTecnico(ResponsavelTecnico entidade) throws SQLException {
+    public boolean updateResponsavelTecnico(ResponsavelTecnico entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_RESPONSAVELTECNICO_SQL)) {
             statement.setString(1, entidade.getNome());
             statement.setString(2, entidade.getConselho());
@@ -121,7 +121,9 @@ public class ResponsavelTecnicoDAO extends ConexaoDB{
             statement.setString(4, entidade.getSiglaFormacao());
             statement.setInt(5, entidade.getSiglaFormacaoId());
             statement.setInt(6, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

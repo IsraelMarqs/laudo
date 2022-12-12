@@ -112,7 +112,7 @@ public class ValorReferenciaComposicaoExameDAO extends ConexaoDB{
         }
     }
 
-    public void updateValorReferenciaComposicaoExame(ValorReferenciaComposicaoExame entidade) throws SQLException {
+    public boolean updateValorReferenciaComposicaoExame(ValorReferenciaComposicaoExame entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_VALORREFERENCIACOMPOSICAOEXAME_SQL)) {
             statement.setString(1, entidade.getValorMinimo());
             statement.setString(2, entidade.getValorMaximo());
@@ -120,7 +120,9 @@ public class ValorReferenciaComposicaoExameDAO extends ConexaoDB{
             statement.setString(4, entidade.getLimitadorMaximo());
             statement.setInt(5, entidade.getUnidadeMedidaId());
             statement.setInt(6, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

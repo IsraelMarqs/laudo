@@ -103,12 +103,14 @@ public class UnidadeMedidaDAO extends ConexaoDB{
         }
     }
 
-    public void updateUnidadeMedida(UnidadeMedida entidade) throws SQLException {
+    public boolean updateUnidadeMedida(UnidadeMedida entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_UNIDADEMEDIDA_SQL)) {
             statement.setString(1, entidade.getMaterial());
             statement.setString(2, entidade.getObservacao());
             statement.setInt(3, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -108,13 +108,14 @@ public class LaudoDAO extends ConexaoDB{
         }
     }
 
-    public void updateLaudo(Laudo entidade) throws SQLException {
+    public boolean updateLaudo(Laudo entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_LAUDO_SQL)) {
             statement.setString(1, entidade.getAssinaturaDigital());
             statement.setString(2, entidade.getDtResultado());
             statement.setString(3, entidade.getCodigo());
             statement.setInt(4, entidade.getSolicitacaoExameId());
             statement.setInt(5, entidade.getId());
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

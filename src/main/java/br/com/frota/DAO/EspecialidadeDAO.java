@@ -104,11 +104,12 @@ public class EspecialidadeDAO extends ConexaoDB{
         }
     }
 
-    public void updateEspecialidade(Especialidade entidade) throws SQLException {
+    public boolean updateEspecialidade(Especialidade entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_ESPECIALIDADE_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setString(2, entidade.getObservacao());
             statement.setInt(3, entidade.getId());
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

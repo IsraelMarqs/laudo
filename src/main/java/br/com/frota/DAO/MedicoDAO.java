@@ -11,10 +11,10 @@ import java.util.List;
 public class MedicoDAO extends ConexaoDB{
 
     private static final String INSERT_MEDICO_SQL = "INSERT INTO medico (CRM, nome) VALUES (?, ?);";
-    private static final String SELECT_MEDICO_BY_ID = "SELECT id, CRM, nome FROM medico WHERE id = ?";
+    private static final String SELECT_MEDICO_BY_ID = "SELECT id, crm, nome FROM medico WHERE id = ?";
     private static final String SELECT_ALL_MEDICO = "SELECT * FROM medico;";
     private static final String DELETE_MEDICO_SQL = "DELETE FROM medico WHERE id = ?;";
-    private static final String UPDATE_MEDICO_SQL = "UPDATE medico SET CRM = ?, nome = ? WHERE id = ?;";
+    private static final String UPDATE_MEDICO_SQL = "UPDATE medico SET crm = ?, nome = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM medico;";
 
     public Integer count() {
@@ -103,12 +103,13 @@ public class MedicoDAO extends ConexaoDB{
         }
     }
 
-    public void updateMedico(Medico entidade) throws SQLException {
+    public boolean updateMedico(Medico entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_MEDICO_SQL)) {
             statement.setString(1, entidade.getCRM());
             statement.setString(2, entidade.getNome());
             statement.setInt(3, entidade.getId());
 
+            return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

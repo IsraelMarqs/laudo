@@ -103,12 +103,14 @@ public class TipoExameDAO extends ConexaoDB{
         }
     }
 
-    public void updateTipoExame(TipoExame entidade) throws SQLException {
+    public boolean updateTipoExame(TipoExame entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_TIPOEXAME_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setString(2, entidade.getObservacao());
             statement.setInt(3, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

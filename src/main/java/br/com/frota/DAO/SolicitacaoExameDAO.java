@@ -113,7 +113,7 @@ public class SolicitacaoExameDAO extends ConexaoDB{
         }
     }
 
-    public void updateSolicitacaoExame(SolicitacaoExame entidade) throws SQLException {
+    public boolean updateSolicitacaoExame(SolicitacaoExame entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_SOLICITACAOEXAME_SQL)) {
             statement.setString(1, entidade.getNmPrescito());
             statement.setInt(2, entidade.getConsultaMedicaId());
@@ -121,7 +121,9 @@ public class SolicitacaoExameDAO extends ConexaoDB{
             statement.setInt(4, entidade.getHabilitacaoExameId());
             statement.setInt(5, entidade.getExameId());
             statement.setInt(6, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

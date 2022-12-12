@@ -111,7 +111,7 @@ public class LaboratorioDAO extends ConexaoDB {
         }
     }
 
-    public void updateLaboratorio(Laboratorio entidade) throws SQLException {
+    public boolean updateLaboratorio(Laboratorio entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_LABORATORIO_SQL)) {
             statement.setString(1, entidade.getDescricao());
             statement.setString(2, entidade.getCNES());
@@ -119,6 +119,8 @@ public class LaboratorioDAO extends ConexaoDB {
             statement.setString(4, entidade.getCRBM());
             statement.setString(5, entidade.getNomeFantasia());
             statement.setInt(6, entidade.getId());
+
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

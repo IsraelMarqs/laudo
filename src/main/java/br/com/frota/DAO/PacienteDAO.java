@@ -104,11 +104,14 @@ public class PacienteDAO extends ConexaoDB{
         }
     }
 
-    public void updatePaciente(Paciente entidade) throws SQLException {
+    public boolean updatePaciente(Paciente entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_PACIENTE_SQL)) {
             statement.setString(1, entidade.getNome());
             statement.setTimestamp(2, entidade.getDtNascimento());
             statement.setInt(3, entidade.getId());
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

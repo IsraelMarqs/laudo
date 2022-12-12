@@ -103,11 +103,12 @@ public class MaterialExameDAO extends ConexaoDB{
         }
     }
 
-    public void updateMaterialExame(MaterialExame entidade) throws SQLException {
+    public boolean updateMaterialExame(MaterialExame entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_MATERIALEXAME_SQL)) {
             statement.setString(1, entidade.getMaterial());
             statement.setString(2, entidade.getObservacao());
             statement.setInt(3, entidade.getId());
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

@@ -103,12 +103,14 @@ public class ResponsavelTecnicoHasLaboratorioDAO extends ConexaoDB{
         }
     }
 
-    public void updateResponsaveltecnicohaslaboratorio(ResponsavelTecnicoHasLaboratorio entidade) throws SQLException {
+    public boolean updateResponsaveltecnicohaslaboratorio(ResponsavelTecnicoHasLaboratorio entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_RESPONSAVELTECNICOHASLABORATORIO_SQL)) {
             statement.setInt(1, entidade.getResponsavelTecnicoId());
             statement.setInt(2, entidade.getLaboratorioId());
             statement.setInt(3, entidade.getId());
-
+            boolean bool = statement.executeUpdate() > 0;
+            statement.getConnection().close();
+            return bool;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

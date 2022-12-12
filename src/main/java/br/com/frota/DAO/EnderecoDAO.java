@@ -118,7 +118,7 @@ public class EnderecoDAO extends ConexaoDB {
         }
     }
 
-    public void updateEndereco(Endereco entidade) throws SQLException {
+    public boolean updateEndereco(Endereco entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_ENDERECO_SQL)) {
             statement.setString(1, entidade.getRua());
             statement.setString(2, entidade.getNumero());
@@ -128,6 +128,8 @@ public class EnderecoDAO extends ConexaoDB {
             statement.setString(6, entidade.getCidade());
             statement.setInt(7, entidade.getLaboratorioId());
             statement.setInt(8, entidade.getId());
+
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);

@@ -103,11 +103,13 @@ public class ContatoDAO extends ConexaoDB {
         }
     }
 
-    public void updateContato(Contato entidade) throws SQLException {
+    public boolean updateContato(Contato entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_CONTATO_SQL)) {
             statement.setString(1, entidade.getTelefone());
             statement.setInt(2, entidade.getLaboratorioId());
             statement.setInt(3, entidade.getId());
+
+            return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
