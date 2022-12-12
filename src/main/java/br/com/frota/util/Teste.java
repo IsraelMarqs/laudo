@@ -5,6 +5,7 @@ import br.com.frota.model.Medico;
 import br.com.frota.servico.ServicoMedico;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Teste {
     static MedicoDAO Med = new MedicoDAO();
@@ -18,24 +19,26 @@ public class Teste {
 
         //salvar
         Medico medi = new Medico(1,"123","Fred");
-        servMed.salvar(medi);
+        Medico medi2 = new Medico(2,"321","Pedro");
+        //servMed.salvar(medi2);
 
         //buscar por ID
-        Med = medi.findById(1);
-        //System.out.println(marca);
+        //Med.findById(2);
+        System.out.println(Med.findById(2));
 
         //Update
-       // marca.setDescricao("Volt");
-       // marcaDAO.updateMarca(marca);
+        medi.setNome("Paulo");
+        Med.updateMedico(medi);
+
         //marca = marcaDAO.findById(2);
         //System.out.println(marca);
 
         //Select all
-       // List<Marca> marcas = marcaDAO.selectAllMarcas();
-        //marcas.forEach(System.out::println());
+        List<Medico> medicos = Med.selectAllMedicos();
+        System.out.println(medicos);
 
         //Delete
-       // marcaDAO.deleteMarca(2);
-        //marcaDAO.selectAllMarcas().forEach(System.out::println);
+        //Med.deleteMedico(2);
+
     }
 }
