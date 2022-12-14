@@ -17,6 +17,8 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
     private static final String UPDATE_MEDICOHASESPECIALIDADE_SQL = "UPDATE medico_has_especialidade SET medico_id = ?, especialidade_id = ? WHERE medico_id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM medico_has_especialidade;";
 
+
+
     public Integer count() {
         Integer count = 0;
         try (PreparedStatement preparedStatement = prepararSQL(TOTAL)) {

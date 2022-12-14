@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class ServicoMedico {
 
     private MedicoDAO medicoDAO = new MedicoDAO();
+    private MedicoHasEspecialidadeDAO medicoHasEspecialidadeDAO = new MedicoHasEspecialidadeDAO();
 
     public Medico salvar(Medico entidade) {
         return medicoDAO.insert(entidade);
@@ -24,9 +25,9 @@ public class ServicoMedico {
     private void salvarEspecialidades(Medico entidade, Medico medicoNovo){
         entidade.
                 getEspecialidades();
-
+                //forEach(e -> medicoHasEspecialidadeDAO.insert(new MedicoHasEspecialidade(medicoNovo.getId(), entidade.getId())));
     }
     public void removerEspecialidadeMedico(Medico medico) throws SQLException{
-        MedicoHasEspecialidadeDAO.
+        medicoHasEspecialidadeDAO.deleteFromMedicoID(medico.getId());
     }
 }
