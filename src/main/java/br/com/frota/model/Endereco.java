@@ -8,9 +8,9 @@ public class Endereco extends GenericModel {
     private String bairro;
     private String CEP;
     private String cidade;
-    private Integer laboratorioId;
+    private Integer laboratorio_id;
 
-    public Endereco(Integer id, String rua, String numero, String complemento, String bairro, String CEP, String cidade, Integer laboratorioId) {
+    public Endereco(Integer id, String rua, String numero, String complemento, String bairro, String CEP, String cidade, Integer laboratorio_id) {
         this.setId(id);
         this.rua = rua;
         this.numero = numero;
@@ -18,10 +18,10 @@ public class Endereco extends GenericModel {
         this.bairro = bairro;
         this.CEP = CEP;
         this.cidade = cidade;
-        this.laboratorioId = laboratorioId;
+        this.laboratorio_id = laboratorio_id;
     }
 
-    public Endereco(String rua, String numero, String complemento, String bairro, String CEP, String cidade, Integer laboratorioId) {
+    public Endereco(String rua, String numero, String complemento, String bairro, String CEP, String cidade, Integer laboratorio_id) {
         super();
         this.rua = rua;
         this.numero = numero;
@@ -29,7 +29,7 @@ public class Endereco extends GenericModel {
         this.bairro = bairro;
         this.CEP = CEP;
         this.cidade = cidade;
-        this.laboratorioId = laboratorioId;
+        this.laboratorio_id = laboratorio_id;
     }
 
     public String getRua() {
@@ -80,12 +80,12 @@ public class Endereco extends GenericModel {
         this.cidade = cidade;
     }
 
-    public Integer getLaboratorioId() {
-        return laboratorioId;
+    public Integer getLaboratorio_id() {
+        return laboratorio_id;
     }
 
-    public void setLaboratorioId(Integer laboratorioId) {
-        this.laboratorioId = laboratorioId;
+    public void setLaboratorio_id(Integer laboratorio_id) {
+        this.laboratorio_id = laboratorio_id;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Endereco extends GenericModel {
                 ", bairro='" + bairro + '\'' +
                 ", CEP='" + CEP + '\'' +
                 ", cidade='" + cidade + '\'' +
-                ", laboratorioId=" + laboratorioId +
+                ", laboratorio_id=" + laboratorio_id +
                 '}';
     }
 }

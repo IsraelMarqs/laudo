@@ -17,6 +17,10 @@ public class TipoExame extends GenericModel{
         this.observacao = observacao;
     }
 
+    public TipoExame(String descricao) {
+        this.descricao=descricao;
+    }
+
     public String getDescricao() {
         return descricao;
     }

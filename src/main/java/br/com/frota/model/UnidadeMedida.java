@@ -2,42 +2,23 @@ package br.com.frota.model;
 
 public class UnidadeMedida extends GenericModel{
 
-    private String material;
-    private String observacao;
+    private String descricao;
 
-    public UnidadeMedida(Integer id, String material, String observacao) {
-        this.setId(id);
-        this.material = material;
-        this.observacao = observacao;
+    public UnidadeMedida(String descricao) {
+        this.descricao = descricao;
+    }
+    public UnidadeMedida(Integer id, String descricao) {
+        this.descricao = descricao;
+        super.setId(id);
     }
 
-    public UnidadeMedida(String material, String observacao) {
-        super();
-        this.material = material;
-        this.observacao = observacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public String getMaterial() {
-        return material;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    @Override
-    public String toString() {
-        return "UnidadeMedida{" +
-                "material='" + material + '\'' +
-                ", observacao='" + observacao + '\'' +
-                '}';
-    }
 }
+

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MedicoHasEspecialidadeDAO extends ConexaoDB{
 
-    private static final String INSERT_MEDICOHASESPECIALIDADE_SQL = "INSERT INTO medico_has_especialidade (medico_id, especialidade_id) VALUES (?, ?, ?);";
+    private static final String INSERT_MEDICOHASESPECIALIDADE_SQL = "INSERT INTO medico_has_especialidade (medico_id, especialidade_id) VALUES (?, ?);";
     private static final String SELECT_MEDICOHASESPECIALIDADE_BY_ID = "SELECT id, medico_id, especialidade_id FROM medico_has_especialidade WHERE id = ?";
     private static final String SELECT_ALL_MEDICOHASESPECIALIDADE = "SELECT * FROM medico_has_especialidade;";
     private static final String DELETE_MEDICOHASESPECIALIDADE_SQL = "DELETE FROM medico_has_especialidade WHERE id = ?;";

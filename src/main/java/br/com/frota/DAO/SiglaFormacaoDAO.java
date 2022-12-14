@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SiglaFormacaoDAO extends ConexaoDB{
 
-    private static final String INSERT_SIGLAFORMACAO_SQL = "INSERT INTO sigla_formacao (silga) VALUES (?);";
+    private static final String INSERT_SIGLAFORMACAO_SQL = "INSERT INTO sigla_formacao (sigla) VALUES (?);";
     private static final String SELECT_SIGLAFORMACAO_BY_ID = "SELECT id, sigla FROM sigla_formacao WHERE id = ?";
     private static final String SELECT_ALL_SIGLAFORMACAO = "SELECT * FROM sigla_formacao;";
     private static final String DELETE_SIGLAFORMACAO_SQL = "DELETE FROM sigla_formacao WHERE id = ?;";

@@ -5,7 +5,7 @@ import br.com.frota.model.MedicoHasEspecialidade;
 
 import java.sql.SQLException;
 
-public class ServicoMedidoHasEspecialiade {
+public class ServicoMedicoHasEspecialiade {
 
     private MedicoHasEspecialidadeDAO medicoHasEspecialidadeDAO = new MedicoHasEspecialidadeDAO();
 

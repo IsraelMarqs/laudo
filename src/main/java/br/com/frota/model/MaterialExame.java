@@ -17,6 +17,10 @@ public class MaterialExame extends GenericModel{
         this.observacao = observacao;
     }
 
+    public MaterialExame(String material) {
+        this.material=material;
+    }
+
     public String getMaterial() {
         return material;
     }

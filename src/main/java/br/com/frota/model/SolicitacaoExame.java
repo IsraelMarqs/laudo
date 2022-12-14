@@ -4,36 +4,36 @@ import java.sql.Timestamp;
 
 public class SolicitacaoExame extends GenericModel{
 
-    private String nmPrescito;
+    private String nmPrescrito;
     private Integer consultaMedicaId;
     private Timestamp dtSolicitacao;
     private Integer habilitacaoExameId;
     private Integer exameId;
 
-    public SolicitacaoExame(Integer id, String nmPrescito, Integer consultaMedicaId, Timestamp dtSolicitacao, Integer habilitacaoExameId, Integer exameId) {
+    public SolicitacaoExame(Integer id, String nmPrescrito, Integer consultaMedicaId, Timestamp dtSolicitacao, Integer habilitacaoExameId, Integer exameId) {
         this.setId(id);
-        this.nmPrescito = nmPrescito;
+        this.nmPrescrito = nmPrescrito;
         this.consultaMedicaId = consultaMedicaId;
         this.dtSolicitacao = dtSolicitacao;
         this.habilitacaoExameId = habilitacaoExameId;
         this.exameId = exameId;
     }
 
-    public SolicitacaoExame(String nmPrescito, Integer consultaMedicaId, Timestamp dtSolicitacao, Integer habilitacaoExameId, Integer exameId) {
+    public SolicitacaoExame(String nmPrescrito, Integer consultaMedicaId, Timestamp dtSolicitacao, Integer habilitacaoExameId, Integer exameId) {
         super();
-        this.nmPrescito = nmPrescito;
+        this.nmPrescrito = nmPrescrito;
         this.consultaMedicaId = consultaMedicaId;
         this.dtSolicitacao = dtSolicitacao;
         this.habilitacaoExameId = habilitacaoExameId;
         this.exameId = exameId;
     }
 
-    public String getNmPrescito() {
-        return nmPrescito;
+    public String getNmPrescrito() {
+        return nmPrescrito;
     }
 
-    public void setNmPrescito(String nmPrescito) {
-        this.nmPrescito = nmPrescito;
+    public void setNmPrescrito(String nmPrescrito) {
+        this.nmPrescrito = nmPrescrito;
     }
 
     public Integer getConsultaMedicaId() {
@@ -71,7 +71,7 @@ public class SolicitacaoExame extends GenericModel{
     @Override
     public String toString() {
         return "SolicitacaoExame{" +
-                "nmPrescito='" + nmPrescito + '\'' +
+                "nmPrescito='" + nmPrescrito + '\'' +
                 ", consultaMedicaId=" + consultaMedicaId +
                 ", dtSolicitacao=" + dtSolicitacao +
                 ", habilitacaoExameId=" + habilitacaoExameId +

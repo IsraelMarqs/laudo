@@ -10,11 +10,11 @@ import java.util.List;
 
 public class EnderecoDAO extends ConexaoDB {
 
-    private static final String INSERT_ENDERECO_SQL = "INSERT INTO endereco (rua, numero, complemento, bairro, CEP, cidade, laboratorioId) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_ENDERECO_BY_ID = "SELECT id, rua, numero, complemento, bairro, CEP, cidade, laboratorioId FROM endereco WHERE id = ?";
+    private static final String INSERT_ENDERECO_SQL = "INSERT INTO endereco (rua, numero, complemento, bairro, CEP, cidade, laboratorio_id) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    private static final String SELECT_ENDERECO_BY_ID = "SELECT id, rua, numero, complemento, bairro, CEP, cidade, laboratorio_id FROM endereco WHERE id = ?";
     private static final String SELECT_ALL_ENDERECO = "SELECT * FROM endereco;";
     private static final String DELETE_ENDERECO_SQL = "DELETE FROM endereco WHERE id = ?;";
-    private static final String UPDATE_ENDERECO_SQL = "UPDATE endereco SET rua = ?, numero = ?, complemento = ?, bairro = ?, CEP = ?, cidade = ?, laboratorioId = ? WHERE id = ?;";
+    private static final String UPDATE_ENDERECO_SQL = "UPDATE endereco SET rua = ?, numero = ?, complemento = ?, bairro = ?, CEP = ?, cidade = ?, laboratorio_id = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM endereco;";
 
     public Integer count() {
@@ -43,7 +43,7 @@ public class EnderecoDAO extends ConexaoDB {
             preparedStatement.setString(4, entidade.getBairro());
             preparedStatement.setString(5, entidade.getCEP());
             preparedStatement.setString(6, entidade.getCidade());
-            preparedStatement.setInt(7, entidade.getLaboratorioId());
+            preparedStatement.setInt(7, entidade.getLaboratorio_id());
 
             preparedStatement.executeUpdate();
 
@@ -73,8 +73,8 @@ public class EnderecoDAO extends ConexaoDB {
                 String bairro = rs.getString("bairro");
                 String CEP = rs.getString("CEP");
                 String cidade = rs.getString("cidade");
-                Integer laboratorioId = rs.getInt("laboratorio_id");
-                entidade = new Endereco(id, rua, numero, complemento, bairro, CEP, cidade, laboratorioId);
+                Integer laboratorio_id = rs.getInt("laboratorio_id");
+                entidade = new Endereco(id, rua, numero, complemento, bairro, CEP, cidade, laboratorio_id);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -97,8 +97,8 @@ public class EnderecoDAO extends ConexaoDB {
                 String bairro = rs.getString("bairro");
                 String CEP = rs.getString("CEP");
                 String cidade = rs.getString("cidade");
-                Integer laboratorioId = rs.getInt("laboratorio_id");
-                entidades.add(new Endereco(id, rua, numero, complemento, bairro, CEP, cidade, laboratorioId));
+                Integer laboratorio_id = rs.getInt("laboratorio_id");
+                entidades.add(new Endereco(id, rua, numero, complemento, bairro, CEP, cidade, laboratorio_id));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -126,7 +126,7 @@ public class EnderecoDAO extends ConexaoDB {
             statement.setString(4, entidade.getBairro());
             statement.setString(5, entidade.getCEP());
             statement.setString(6, entidade.getCidade());
-            statement.setInt(7, entidade.getLaboratorioId());
+            statement.setInt(7, entidade.getLaboratorio_id());
             statement.setInt(8, entidade.getId());
 
             return statement.executeUpdate() > 0;
