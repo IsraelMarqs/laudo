@@ -1,9 +1,20 @@
 package br.com.frota.model;
 
+import java.util.List;
+
 public class Medico extends GenericModel{
 
     private String CRM;
     private String nome;
+    private List<Especialidade> Especialidades;
+
+    public List<Especialidade> getEspecialidades() {
+        return Especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidade> especialidades) {
+        Especialidades = especialidades;
+    }
 
     public Medico(Integer id, String CRM, String nome) {
         this.setId(id);

@@ -1,18 +1,12 @@
 package br.com.frota.model;
 
-public class MedicoHasEspecialidade extends GenericModel{
+public class MedicoHasEspecialidade{
 
     private Integer medicoId;
     private Integer especialidadeId;
 
-    public MedicoHasEspecialidade(Integer id, Integer medicoId, Integer especialidadeId) {
-        this.setId(id);
-        this.medicoId = medicoId;
-        this.especialidadeId = especialidadeId;
-    }
-
     public MedicoHasEspecialidade(Integer medicoId, Integer especialidadeId) {
-        super();
+
         this.medicoId = medicoId;
         this.especialidadeId = especialidadeId;
     }

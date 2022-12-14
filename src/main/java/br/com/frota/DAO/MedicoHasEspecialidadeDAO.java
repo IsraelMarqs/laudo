@@ -13,8 +13,8 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
     private static final String INSERT_MEDICOHASESPECIALIDADE_SQL = "INSERT INTO medico_has_especialidade (medico_id, especialidade_id) VALUES (?, ?);";
     private static final String SELECT_MEDICOHASESPECIALIDADE_BY_ID = "SELECT id, medico_id, especialidade_id FROM medico_has_especialidade WHERE id = ?";
     private static final String SELECT_ALL_MEDICOHASESPECIALIDADE = "SELECT * FROM medico_has_especialidade;";
-    private static final String DELETE_MEDICOHASESPECIALIDADE_SQL = "DELETE FROM medico_has_especialidade WHERE id = ?;";
-    private static final String UPDATE_MEDICOHASESPECIALIDADE_SQL = "UPDATE medico_has_especialidade SET medico_id = ?, especialidade_id = ? WHERE id = ?;";
+    private static final String DELETE_MEDICOHASESPECIALIDADEFROMMEDICO_SQL = "DELETE FROM medico_has_especialidade";
+    private static final String UPDATE_MEDICOHASESPECIALIDADE_SQL = "UPDATE medico_has_especialidade SET medico_id = ?, especialidade_id = ? WHERE medico_id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM medico_has_especialidade;";
 
     public Integer count() {
@@ -43,9 +43,7 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
             preparedStatement.executeUpdate();
 
             ResultSet result = preparedStatement.getGeneratedKeys();
-            if (result.next()) {
-                entidade.setId(result.getInt(1));
-            }
+
         } catch (SQLException e) {
             printSQLException(e);
         } catch (ClassNotFoundException e) {
@@ -64,7 +62,7 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
             while (rs.next()) {
                 Integer medicoId = rs.getInt("medico_id");
                 Integer especialidadeId = rs.getInt("especialidade_id");
-                entidade = new MedicoHasEspecialidade(id, medicoId, especialidadeId);
+                entidade = new MedicoHasEspecialidade(medicoId, especialidadeId);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -83,7 +81,7 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
                 Integer id = rs.getInt("id");
                 Integer medicoId = rs.getInt("medico_id");
                 Integer especialidadeId = rs.getInt("especialidade_id");
-                entidades.add(new MedicoHasEspecialidade(id, medicoId, especialidadeId));
+                entidades.add(new MedicoHasEspecialidade(medicoId, especialidadeId));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -93,8 +91,8 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
         return entidades;
     }
 
-    public boolean deleteMedicoHasEspecialidade(int id) throws SQLException {
-        try (PreparedStatement statement = prepararSQL(DELETE_MEDICOHASESPECIALIDADE_SQL)) {
+    public boolean deleteFromMedicoID(int id) throws SQLException {
+        try (PreparedStatement statement = prepararSQL(DELETE_MEDICOHASESPECIALIDADEFROMMEDICO_SQL)) {
             statement.setInt(1, id);
 
             return statement.executeUpdate() > 0;
@@ -107,7 +105,7 @@ public class MedicoHasEspecialidadeDAO extends ConexaoDB{
         try (PreparedStatement statement = prepararSQL(UPDATE_MEDICOHASESPECIALIDADE_SQL)) {
             statement.setInt(1, entidade.getMedicoId());
             statement.setInt(2, entidade.getEspecialidadeId());
-            statement.setInt(3, entidade.getId());
+
             return statement.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {

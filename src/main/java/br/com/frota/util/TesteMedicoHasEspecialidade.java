@@ -35,6 +35,6 @@ public class TesteMedicoHasEspecialidade {
         List<MedicoHasEspecialidade> medicoHasEspecialidades = medicoHasEspecialidadeDAO.selectAllMedicosHasEspecialidades();
         medicoHasEspecialidades.forEach(System.out::println);
 
-        medicoHasEspecialidadeDAO.deleteMedicoHasEspecialidade(1);
+        medicoHasEspecialidadeDAO.deleteFromMedicoID(1);
     }
 }

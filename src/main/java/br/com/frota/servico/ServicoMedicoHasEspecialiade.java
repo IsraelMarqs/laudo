@@ -15,5 +15,5 @@ public class ServicoMedicoHasEspecialiade {
 
     public void update(MedicoHasEspecialidade medicoHasEspecialidade) throws SQLException { medicoHasEspecialidadeDAO.updateMedicoHasEspecialidade(medicoHasEspecialidade); }
 
-    public void remover(Integer id) throws SQLException { medicoHasEspecialidadeDAO.deleteMedicoHasEspecialidade(id); }
+    public void remover(Integer id) throws SQLException { medicoHasEspecialidadeDAO.deleteFromMedicoID(id); }
 }
